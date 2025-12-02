@@ -1,0 +1,333 @@
+[2025-12-02 13:31:36] local.ERROR: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it (Connection: mysql, SQL: select exists (select 1 from information_schema.tables where table_schema = schema() and table_name = 'migrations' and table_type in ('BASE TABLE', 'SYSTEM VERSIONED')) as `exists`) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 2002): SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it (Connection: mysql, SQL: select exists (select 1 from information_schema.tables where table_schema = schema() and table_name = 'migrations' and table_type in ('BASE TABLE', 'SYSTEM VERSIONED')) as `exists`) at C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:824)
+[stacktrace]
+#0 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(978): Illuminate\\Database\\Connection->runQueryCallback('select exists (...', Array, Object(Closure))
+#1 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(957): Illuminate\\Database\\Connection->tryAgainIfCausedByLostConnection(Object(Illuminate\\Database\\QueryException), 'select exists (...', Array, Object(Closure))
+#2 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(780): Illuminate\\Database\\Connection->handleQueryException(Object(Illuminate\\Database\\QueryException), 'select exists (...', Array, Object(Closure))
+#3 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(397): Illuminate\\Database\\Connection->run('select exists (...', Array, Object(Closure))
+#4 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(343): Illuminate\\Database\\Connection->select('select exists (...', Array, true)
+#5 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(360): Illuminate\\Database\\Connection->selectOne('select exists (...', Array, true)
+#6 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Builder.php(174): Illuminate\\Database\\Connection->scalar('select exists (...')
+#7 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\DatabaseMigrationRepository.php(185): Illuminate\\Database\\Schema\\Builder->hasTable('migrations')
+#8 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(753): Illuminate\\Database\\Migrations\\DatabaseMigrationRepository->repositoryExists()
+#9 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(164): Illuminate\\Database\\Migrations\\Migrator->repositoryExists()
+#10 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\helpers.php(329): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->Illuminate\\Database\\Console\\Migrations\\{closure}(1)
+#11 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(164): retry(1, Object(Closure), 0, Object(Closure))
+#12 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(140): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->repositoryExists()
+#13 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(110): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->prepareDatabase()
+#14 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(666): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->Illuminate\\Database\\Console\\Migrations\\{closure}()
+#15 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(109): Illuminate\\Database\\Migrations\\Migrator->usingConnection(NULL, Object(Closure))
+#16 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(88): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->runMigrations()
+#17 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->handle()
+#18 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#19 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(96): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#20 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#21 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(836): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#22 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(211): Illuminate\\Container\\Container->call(Array)
+#23 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\symfony\\console\\Command\\Command.php(335): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#24 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(180): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#25 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\symfony\\console\\Application.php(1103): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#26 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\symfony\\console\\Application.php(356): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\MigrateCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#27 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\symfony\\console\\Application.php(195): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#28 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(197): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#29 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1235): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#30 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\artisan(16): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#31 {main}
+
+[previous exception] [object] (PDOException(code: 2002): SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it at C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\Connector.php:66)
+[stacktrace]
+#0 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\Connector.php(66): PDO->__construct('mysql:host=127....', 'root', Object(SensitiveParameterValue), Array)
+#1 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\Connector.php(85): Illuminate\\Database\\Connectors\\Connector->createPdoConnection('mysql:host=127....', 'root', Object(SensitiveParameterValue), Array)
+#2 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\Connector.php(48): Illuminate\\Database\\Connectors\\Connector->tryAgainIfCausedByLostConnection(Object(PDOException), 'mysql:host=127....', 'root', Object(SensitiveParameterValue), Array)
+#3 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\MySqlConnector.php(24): Illuminate\\Database\\Connectors\\Connector->createConnection('mysql:host=127....', Array, Array)
+#4 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connectors\\ConnectionFactory.php(184): Illuminate\\Database\\Connectors\\MySqlConnector->connect(Array)
+#5 [internal function]: Illuminate\\Database\\Connectors\\ConnectionFactory->Illuminate\\Database\\Connectors\\{closure}()
+#6 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(1234): call_user_func(Object(Closure))
+#7 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(1270): Illuminate\\Database\\Connection->getPdo()
+#8 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(511): Illuminate\\Database\\Connection->getReadPdo()
+#9 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(406): Illuminate\\Database\\Connection->getPdoForSelect(true)
+#10 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(811): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}('select exists (...', Array)
+#11 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(978): Illuminate\\Database\\Connection->runQueryCallback('select exists (...', Array, Object(Closure))
+#12 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(957): Illuminate\\Database\\Connection->tryAgainIfCausedByLostConnection(Object(Illuminate\\Database\\QueryException), 'select exists (...', Array, Object(Closure))
+#13 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(780): Illuminate\\Database\\Connection->handleQueryException(Object(Illuminate\\Database\\QueryException), 'select exists (...', Array, Object(Closure))
+#14 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(397): Illuminate\\Database\\Connection->run('select exists (...', Array, Object(Closure))
+#15 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(343): Illuminate\\Database\\Connection->select('select exists (...', Array, true)
+#16 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(360): Illuminate\\Database\\Connection->selectOne('select exists (...', Array, true)
+#17 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Builder.php(174): Illuminate\\Database\\Connection->scalar('select exists (...')
+#18 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\DatabaseMigrationRepository.php(185): Illuminate\\Database\\Schema\\Builder->hasTable('migrations')
+#19 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(753): Illuminate\\Database\\Migrations\\DatabaseMigrationRepository->repositoryExists()
+#20 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(164): Illuminate\\Database\\Migrations\\Migrator->repositoryExists()
+#21 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\helpers.php(329): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->Illuminate\\Database\\Console\\Migrations\\{closure}(1)
+#22 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(164): retry(1, Object(Closure), 0, Object(Closure))
+#23 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(140): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->repositoryExists()
+#24 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(110): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->prepareDatabase()
+#25 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(666): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->Illuminate\\Database\\Console\\Migrations\\{closure}()
+#26 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(109): Illuminate\\Database\\Migrations\\Migrator->usingConnection(NULL, Object(Closure))
+#27 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(88): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->runMigrations()
+#28 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->handle()
+#29 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#30 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(96): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#31 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#32 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(836): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#33 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(211): Illuminate\\Container\\Container->call(Array)
+#34 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\symfony\\console\\Command\\Command.php(335): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#35 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(180): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#36 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\symfony\\console\\Application.php(1103): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#37 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\symfony\\console\\Application.php(356): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\MigrateCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#38 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\symfony\\console\\Application.php(195): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#39 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(197): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#40 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1235): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#41 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\artisan(16): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#42 {main}
+"} 
+[2025-12-02 14:11:30] local.ERROR: SQLSTATE[HY000]: General error: 1 table "carts" already exists (Connection: sqlite, SQL: create table "carts" ("id" integer primary key autoincrement not null, "user_id" integer, "total" numeric not null default '0', "created_at" datetime, "updated_at" datetime, foreign key("user_id") references "users"("id") on delete cascade)) {"exception":"[object] (Illuminate\\Database\\QueryException(code: HY000): SQLSTATE[HY000]: General error: 1 table \"carts\" already exists (Connection: sqlite, SQL: create table \"carts\" (\"id\" integer primary key autoincrement not null, \"user_id\" integer, \"total\" numeric not null default '0', \"created_at\" datetime, \"updated_at\" datetime, foreign key(\"user_id\") references \"users\"(\"id\") on delete cascade)) at C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:824)
+[stacktrace]
+#0 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(778): Illuminate\\Database\\Connection->runQueryCallback('create table \"c...', Array, Object(Closure))
+#1 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(559): Illuminate\\Database\\Connection->run('create table \"c...', Array, Object(Closure))
+#2 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Blueprint.php(121): Illuminate\\Database\\Connection->statement('create table \"c...')
+#3 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Builder.php(618): Illuminate\\Database\\Schema\\Blueprint->build()
+#4 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Builder.php(472): Illuminate\\Database\\Schema\\Builder->build(Object(Illuminate\\Database\\Schema\\Blueprint))
+#5 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Facades\\Facade.php(363): Illuminate\\Database\\Schema\\Builder->create('carts', Object(Closure))
+#6 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\database\\migrations\\2025_12_02_135900_create_carts_table.php(14): Illuminate\\Support\\Facades\\Facade::__callStatic('create', Array)
+#7 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(514): Illuminate\\Database\\Migrations\\Migration@anonymous->up()
+#8 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(439): Illuminate\\Database\\Migrations\\Migrator->runMethod(Object(Illuminate\\Database\\SQLiteConnection), Object(Illuminate\\Database\\Migrations\\Migration@anonymous), 'up')
+#9 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(448): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}()
+#10 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(250): Illuminate\\Database\\Migrations\\Migrator->runMigration(Object(Illuminate\\Database\\Migrations\\Migration@anonymous), 'up')
+#11 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\View\\Components\\Task.php(41): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}()
+#12 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(809): Illuminate\\Console\\View\\Components\\Task->render('2025_12_02_1359...', Object(Closure))
+#13 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(250): Illuminate\\Database\\Migrations\\Migrator->write('Illuminate\\\\Cons...', '2025_12_02_1359...', Object(Closure))
+#14 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(210): Illuminate\\Database\\Migrations\\Migrator->runUp('C:\\\\Users\\\\Lenovo...', 2, false)
+#15 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(137): Illuminate\\Database\\Migrations\\Migrator->runPending(Array, Array)
+#16 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(116): Illuminate\\Database\\Migrations\\Migrator->run(Array, Array)
+#17 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(666): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->Illuminate\\Database\\Console\\Migrations\\{closure}()
+#18 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(109): Illuminate\\Database\\Migrations\\Migrator->usingConnection(NULL, Object(Closure))
+#19 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(88): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->runMigrations()
+#20 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->handle()
+#21 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#22 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(96): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#23 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#24 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(836): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#25 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(211): Illuminate\\Container\\Container->call(Array)
+#26 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\symfony\\console\\Command\\Command.php(335): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#27 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(180): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#28 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\symfony\\console\\Application.php(1103): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#29 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\symfony\\console\\Application.php(356): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\MigrateCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#30 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\symfony\\console\\Application.php(195): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#31 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(197): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#32 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1235): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#33 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\artisan(16): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#34 {main}
+
+[previous exception] [object] (PDOException(code: HY000): SQLSTATE[HY000]: General error: 1 table \"carts\" already exists at C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:564)
+[stacktrace]
+#0 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(564): PDO->prepare('create table \"c...')
+#1 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(811): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}('create table \"c...', Array)
+#2 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(778): Illuminate\\Database\\Connection->runQueryCallback('create table \"c...', Array, Object(Closure))
+#3 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(559): Illuminate\\Database\\Connection->run('create table \"c...', Array, Object(Closure))
+#4 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Blueprint.php(121): Illuminate\\Database\\Connection->statement('create table \"c...')
+#5 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Builder.php(618): Illuminate\\Database\\Schema\\Blueprint->build()
+#6 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Builder.php(472): Illuminate\\Database\\Schema\\Builder->build(Object(Illuminate\\Database\\Schema\\Blueprint))
+#7 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Facades\\Facade.php(363): Illuminate\\Database\\Schema\\Builder->create('carts', Object(Closure))
+#8 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\database\\migrations\\2025_12_02_135900_create_carts_table.php(14): Illuminate\\Support\\Facades\\Facade::__callStatic('create', Array)
+#9 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(514): Illuminate\\Database\\Migrations\\Migration@anonymous->up()
+#10 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(439): Illuminate\\Database\\Migrations\\Migrator->runMethod(Object(Illuminate\\Database\\SQLiteConnection), Object(Illuminate\\Database\\Migrations\\Migration@anonymous), 'up')
+#11 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(448): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}()
+#12 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(250): Illuminate\\Database\\Migrations\\Migrator->runMigration(Object(Illuminate\\Database\\Migrations\\Migration@anonymous), 'up')
+#13 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\View\\Components\\Task.php(41): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}()
+#14 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(809): Illuminate\\Console\\View\\Components\\Task->render('2025_12_02_1359...', Object(Closure))
+#15 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(250): Illuminate\\Database\\Migrations\\Migrator->write('Illuminate\\\\Cons...', '2025_12_02_1359...', Object(Closure))
+#16 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(210): Illuminate\\Database\\Migrations\\Migrator->runUp('C:\\\\Users\\\\Lenovo...', 2, false)
+#17 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(137): Illuminate\\Database\\Migrations\\Migrator->runPending(Array, Array)
+#18 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(116): Illuminate\\Database\\Migrations\\Migrator->run(Array, Array)
+#19 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(666): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->Illuminate\\Database\\Console\\Migrations\\{closure}()
+#20 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(109): Illuminate\\Database\\Migrations\\Migrator->usingConnection(NULL, Object(Closure))
+#21 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(88): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->runMigrations()
+#22 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->handle()
+#23 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#24 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(96): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#25 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#26 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(836): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#27 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(211): Illuminate\\Container\\Container->call(Array)
+#28 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\symfony\\console\\Command\\Command.php(335): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#29 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(180): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#30 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\symfony\\console\\Application.php(1103): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#31 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\symfony\\console\\Application.php(356): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\MigrateCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#32 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\symfony\\console\\Application.php(195): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#33 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(197): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#34 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1235): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#35 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\artisan(16): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#36 {main}
+"} 
+[2025-12-02 14:15:01] local.ERROR: Command "make:service" is not defined.
+
+Did you mean one of these?
+    make:cache-table
+    make:cast
+    make:channel
+    make:class
+    make:command
+    make:component
+    make:config
+    make:controller
+    make:enum
+    make:event
+    make:exception
+    make:factory
+    make:interface
+    make:job
+    make:job-middleware
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:notifications-table
+    make:observer
+    make:policy
+    make:provider
+    make:queue-batches-table
+    make:queue-failed-table
+    make:queue-table
+    make:request
+    make:resource
+    make:rule
+    make:scope
+    make:seeder
+    make:session-table
+    make:test
+    make:trait
+    make:view {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"make:service\" is not defined.
+
+Did you mean one of these?
+    make:cache-table
+    make:cast
+    make:channel
+    make:class
+    make:command
+    make:component
+    make:config
+    make:controller
+    make:enum
+    make:event
+    make:exception
+    make:factory
+    make:interface
+    make:job
+    make:job-middleware
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:notifications-table
+    make:observer
+    make:policy
+    make:provider
+    make:queue-batches-table
+    make:queue-failed-table
+    make:queue-table
+    make:request
+    make:resource
+    make:rule
+    make:scope
+    make:seeder
+    make:session-table
+    make:test
+    make:trait
+    make:view at C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\symfony\\console\\Application.php:760)
+[stacktrace]
+#0 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\symfony\\console\\Application.php(298): Symfony\\Component\\Console\\Application->find('make:service')
+#1 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\symfony\\console\\Application.php(195): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(197): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1235): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\artisan(16): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#5 {main}
+"} 
+[2025-12-02 14:15:02] local.ERROR: Command "make:service" is not defined.
+
+Did you mean one of these?
+    make:cache-table
+    make:cast
+    make:channel
+    make:class
+    make:command
+    make:component
+    make:config
+    make:controller
+    make:enum
+    make:event
+    make:exception
+    make:factory
+    make:interface
+    make:job
+    make:job-middleware
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:notifications-table
+    make:observer
+    make:policy
+    make:provider
+    make:queue-batches-table
+    make:queue-failed-table
+    make:queue-table
+    make:request
+    make:resource
+    make:rule
+    make:scope
+    make:seeder
+    make:session-table
+    make:test
+    make:trait
+    make:view {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"make:service\" is not defined.
+
+Did you mean one of these?
+    make:cache-table
+    make:cast
+    make:channel
+    make:class
+    make:command
+    make:component
+    make:config
+    make:controller
+    make:enum
+    make:event
+    make:exception
+    make:factory
+    make:interface
+    make:job
+    make:job-middleware
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:notifications-table
+    make:observer
+    make:policy
+    make:provider
+    make:queue-batches-table
+    make:queue-failed-table
+    make:queue-table
+    make:request
+    make:resource
+    make:rule
+    make:scope
+    make:seeder
+    make:session-table
+    make:test
+    make:trait
+    make:view at C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\symfony\\console\\Application.php:760)
+[stacktrace]
+#0 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\symfony\\console\\Application.php(298): Symfony\\Component\\Console\\Application->find('make:service')
+#1 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\symfony\\console\\Application.php(195): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(197): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1235): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 C:\\Users\\Lenovo\\Downloads\\Web_Final_Prpject-main (1)\\Web_Final_Prpject-main\\Src\\artisan(16): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#5 {main}
+"} 
