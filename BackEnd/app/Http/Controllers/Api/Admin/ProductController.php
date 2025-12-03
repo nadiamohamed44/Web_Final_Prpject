@@ -84,80 +84,91 @@ class ProductController extends Controller
      * POST /api/admin/menu
      * إنشاء منتج جديد
      */
-    public function store(StoreProductRequest $request): JsonResponse
-    {
-        try {
-            $data = $request->validated();
-            
-            // رفع الصورة إذا وجدت
-            if ($request->hasFile('image')) {
-                $path = $request->file('image')->store('products', 'public');
-                $data['image'] = $path;
-            }
-            
-            $product = Product::create($data);
-            
-            return response()->json([
-                'success' => true,
-                'message' => 'تم إنشاء المنتج بنجاح',
-                'data' => $product->load('category')
-            ], 201);
-            
-        } catch (\Exception $e) {
-            return response()->json([
-                'success' => false,
-                'message' => 'حدث خطأ في إنشاء المنتج',
-                'error' => $e->getMessage()
-            ], 500);
-        }
+    public function store(Request $request): JsonResponse
+{
+    try {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'price' => 'required|numeric|min:0',
+            'category_id' => 'required|exists:categories,id',
+            'is_available' => 'boolean'
+        ]);
+        
+        $validated['slug'] = \Illuminate\Support\Str::slug($validated['name']) . '-' . \Illuminate\Support\Str::random(6);
+        
+        $product = Product::create($validated);
+        
+        return response()->json([
+            'success' => true,
+            'message' => 'تم إنشاء المنتج بنجاح',
+            'data' => $product->load('category')
+        ], 201);
+        
+    } catch (\Illuminate\Validation\ValidationException $e) {
+        return response()->json([
+            'success' => false,
+            'message' => 'خطأ في التحقق من البيانات',
+            'errors' => $e->errors()
+        ], 422);
+    } catch (\Exception $e) {
+        return response()->json([
+            'success' => false,
+            'message' => 'حدث خطأ في إنشاء المنتج',
+            'error' => $e->getMessage()
+        ], 500);
     }
-
+}
     /**
      * PUT /api/admin/menu/{id}
      * تحديث منتج موجود
      */
-    public function update(UpdateProductRequest $request, $id): JsonResponse
-    {
-        try {
-            $product = Product::find($id);
-            
-            if (!$product) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'المنتج غير موجود'
-                ], 404);
-            }
-            
-            $data = $request->validated();
-            
-            // رفع صورة جديدة إذا وجدت
-            if ($request->hasFile('image')) {
-                // حذف الصورة القديمة إذا كانت موجودة
-                if ($product->image && Storage::disk('public')->exists($product->image)) {
-                    Storage::disk('public')->delete($product->image);
-                }
-                
-                $path = $request->file('image')->store('products', 'public');
-                $data['image'] = $path;
-            }
-            
-            $product->update($data);
-            
-            return response()->json([
-                'success' => true,
-                'message' => 'تم تحديث المنتج بنجاح',
-                'data' => $product->fresh()->load('category')
-            ]);
-            
-        } catch (\Exception $e) {
+    public function update(Request $request, $id): JsonResponse
+{
+    try {
+        $product = Product::find($id);
+        
+        if (!$product) {
             return response()->json([
                 'success' => false,
-                'message' => 'حدث خطأ في تحديث المنتج',
-                'error' => $e->getMessage()
-            ], 500);
+                'message' => 'المنتج غير موجود'
+            ], 404);
         }
+        
+        $validated = $request->validate([
+            'name' => 'sometimes|string|max:255',
+            'price' => 'sometimes|numeric|min:0',
+            'category_id' => 'sometimes|exists:categories,id',
+            'is_available' => 'boolean',
+            'is_featured' => 'boolean'
+        ]);
+        
+        // ⭐⭐ أضيفي هذا الجزء ⭐⭐
+        if ($request->has('name')) {
+            $validated['slug'] = \Illuminate\Support\Str::slug($validated['name']) . '-' . \Illuminate\Support\Str::random(6);
+        }
+        
+        $product->update($validated);
+        
+        return response()->json([
+            'success' => true,
+            'message' => 'تم تحديث المنتج بنجاح',
+            'data' => $product->fresh()->load('category')
+        ]);
+        
+    } catch (\Illuminate\Validation\ValidationException $e) {
+        return response()->json([
+            'success' => false,
+            'message' => 'خطأ في التحقق من البيانات',
+            'errors' => $e->errors()
+        ], 422);
+    } catch (\Exception $e) {
+        return response()->json([
+            'success' => false,
+            'message' => 'حدث خطأ في تحديث المنتج',
+            'error' => $e->getMessage()
+        ], 500);
     }
-
+}
     /**
      * DELETE /api/admin/menu/{id}
      * حذف منتج
