@@ -1,18 +1,22 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MenuController;
+use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\Api\Admin\ProductController as AdminProductController;
 
-// Public Menu Routes
-Route::get('/menu', [MenuController::class, 'index']);
-Route::get('/menu/featured', [MenuController::class, 'featured']);
-Route::get('/menu/{id}', [MenuController::class, 'show']);
+// 🔹 Public Product Routes
+Route::prefix('menu')->group(function () {
+    Route::get('/', [ProductController::class, 'index']);
+    Route::get('/categories', [ProductController::class, 'categories']);
+    Route::get('/{id}', [ProductController::class, 'show']);
+});
 
-// Test Route
-Route::get('/test', function () {
-    return response()->json([
-        'success' => true,
-        'message' => 'API is working!'
-    ]);
+// 🔹 Admin Product Routes (بدون auth)
+Route::prefix('admin')->group(function () {
+    Route::prefix('menu')->group(function () {
+        Route::get('/', [AdminProductController::class, 'index']);
+        Route::post('/', [AdminProductController::class, 'store']);
+        Route::put('/{id}', [AdminProductController::class, 'update']);
+        Route::delete('/{id}', [AdminProductController::class, 'destroy']);
+    });
 });

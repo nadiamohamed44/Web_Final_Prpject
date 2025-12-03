@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    public function up()
+    public function up(): void
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
@@ -15,11 +15,13 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('image')->nullable();
             $table->boolean('is_active')->default(true);
+            $table->integer('order')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('categories');
     }
