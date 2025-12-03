@@ -1,0 +1,91 @@
+ body {
+      background: linear-gradient(135deg,#ebd8c9 0%,#f6efe9 100%);
+      font-family: "Poppins", sans-serif;
+      min-height: 100vh;
+      padding-top: 100px;
+    }
+    .page-title {
+      text-align: center;
+      margin: 30px 0 40px;
+      letter-spacing: 4px;
+      font-size: 32px;
+      font-weight: 800;
+      color: #fff;
+      text-shadow: 0 0 10px #d1928b;
+    }
+    .order-card {
+      background: #e6afa8;
+      border-radius: 18px;
+      overflow: hidden;
+      margin-bottom: 25px;
+      box-shadow: 0 10px 25px rgba(209,146,139,0.3);
+      border: 1px solid #d1928b;
+      transition: all 0.3s ease;
+    }
+    .order-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 18px 35px rgba(209,146,139,0.4);
+    }
+    .order-header {
+      background: #d1928b;
+      color: #fff;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+    }
+    .order-id { font-size: 18px; }
+    .order-date { font-size: 14px; opacity: 0.9; }
+    .status {
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .status.delivered { background: #996c67; color: #fff; }
+    .status.preparing { background: #d1928b; color: #fff; }
+    .status.ontheway { background: #a37974; color: #fff; }
+    .status.cancelled { background: #666; color: #fff; }
+
+    .order-body {
+      padding: 20px;
+      color: #6b4f4a;
+    }
+    .order-items {
+      margin: 15px 0;
+    }
+    .order-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .total-price {
+      font-size: 20px;
+      font-weight: 800;
+      color: #996c67;
+      text-align: right;
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 2px dashed #d6b8b4;
+    }
+    .track-btn {
+      background: #d1928b;
+      color: #131212;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 12px;
+      font-weight: 700;
+      margin-top: 10px;
+    }
+    .track-btn:hover {
+      background: #996c67;
+      transform: scale(1.05);
+    }
+    .empty-state {
+      text-align: center;
+      padding: 80px 20px;
+      color: #996c67;
+      font-size: 18px;
+    }
