@@ -2,102 +2,92 @@
 // API URL
 const apiURL = 'https://myshop.com/api/products'; // غيّري للرابط الحقيقي
 
-
 document.addEventListener("DOMContentLoaded", () => {
   // تحميل Navbar
   fetch("navbar.html")
     .then(res => res.text())
     .then(data => {
       const placeholder = document.getElementById("navbar-placeholder");
-      placeholder.innerHTML = data;
+      if (placeholder) {
+        placeholder.innerHTML = data;
+        const navbar = placeholder.querySelector('nav');
 
-      const navbar = placeholder.querySelector('nav');
+        if (navbar) {
+          // scroll effect
+          window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+              navbar.classList.add('scrolled');
+            } else {
+              navbar.classList.remove('scrolled');
+            }
+          });
 
-      // scroll effect
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-          navbar.classList.add('scrolled');
-        } else {
-          navbar.classList.remove('scrolled');
+          // smooth scroll
+          navbar.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', e => {
+              e.preventDefault();
+              const target = document.querySelector(anchor.getAttribute('href'));
+              if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+            });
+          });
         }
-      });
-
-      // smooth scroll
-      navbar.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', e => {
-          e.preventDefault();
-          const target = document.querySelector(anchor.getAttribute('href'));
-          if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
-        });
-      });
-
+      }
     })
     .catch(err => console.error("Error loading navbar:", err));
-});
 
-//footer
-// تحميل Footer في صفحة
-document.addEventListener("DOMContentLoaded", () => {
+  // تحميل Footer
   fetch("footer.html")
-      .then(res => res.text())
-      .then(data => {
-          const footerPlaceholder = document.createElement('div');
-          footerPlaceholder.innerHTML = data;
-          document.body.appendChild(footerPlaceholder);
+    .then(res => res.text())
+    .then(data => {
+      const footerPlaceholder = document.createElement('div');
+      footerPlaceholder.innerHTML = data;
+      document.body.appendChild(footerPlaceholder);
 
-          // مثال: تحديث السنة الحالية تلقائياً
-          const yearSpan = document.getElementById("current-year");
-          if (yearSpan) {
-              yearSpan.textContent = new Date().getFullYear();
-          }
+      // تحديث السنة الحالية تلقائياً
+      const yearSpan = document.getElementById("current-year");
+      if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+      }
+    })
+    .catch(err => console.error('Error loading footer:', err));
 
-          // أي أحداث إضافية للـ Footer ممكن تحطيها هنا
-      })
-      .catch(err => console.error('Error loading footer:', err));
-});
-ليه
-
-//home- Dish rotation on scroll - FIXED
-const dishImage = document.querySelector('.wilma-dish-image'); 
-
-if (dishImage) {
+  // Dish rotation on scroll
+  const dishImage = document.querySelector('.wilma-dish-image');
+  if (dishImage) {
     let lastScrollY = window.scrollY;
     let rotation = 0;
 
     window.addEventListener('scroll', function() {
-        const currentScrollY = window.scrollY;
-        const scrollDifference = currentScrollY - lastScrollY;
-        
-        // Rotate based on scroll direction and amount
-        rotation += scrollDifference * 0.5;
-        dishImage.style.transform = `rotate(${rotation}deg)`;
-        
-        lastScrollY = currentScrollY;
+      const currentScrollY = window.scrollY;
+      const scrollDifference = currentScrollY - lastScrollY;
+      
+      // Rotate based on scroll direction and amount
+      rotation += scrollDifference * 0.5;
+      dishImage.style.transform = `rotate(${rotation}deg)`;
+      
+      lastScrollY = currentScrollY;
     });
-}
+  }
 
-//home- Smooth scrolling
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  // Smooth scrolling for all anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
     });
+  });
+
+  // Products section
+  initializeProducts();
 });
-
-
-
-
-
-
-
 
 // Dummy data
 const dummyProducts = [
@@ -113,6 +103,8 @@ let allProducts = [];
 // عرض المنتجات
 function displayProducts(products) {
   const container = document.getElementById('products-container');
+  if (!container) return;
+  
   container.innerHTML = '';
   products.forEach((product, index) => {
     const card = document.createElement('div');
@@ -126,44 +118,46 @@ function displayProducts(products) {
       </div>
     `;
     container.appendChild(card);
-    setTimeout(() => card.querySelector('.product-card').classList.add('show'), 100 * index);
+    setTimeout(() => {
+      const productCard = card.querySelector('.product-card');
+      if (productCard) {
+        productCard.classList.add('show');
+      }
+    }, 100 * index);
   });
 }
 
-// جلب البيانات من API أو fallback للـ dummy
-if (apiURL) {
-  fetch(apiURL)
-    .then(res => res.json())
-    .then(data => {
-      allProducts = data;
-      displayProducts(allProducts);
-    })
-    .catch(err => {
-      console.error('Error fetching products:', err);
-      allProducts = dummyProducts;
-      displayProducts(allProducts);
+// تهيئة المنتجات
+function initializeProducts() {
+  // جلب البيانات من API أو fallback للـ dummy
+  if (apiURL && apiURL !== 'https://myshop.com/api/products') {
+    fetch(apiURL)
+      .then(res => res.json())
+      .then(data => {
+        allProducts = data;
+        displayProducts(allProducts);
+      })
+      .catch(err => {
+        console.error('Error fetching products:', err);
+        allProducts = dummyProducts;
+        displayProducts(allProducts);
+      });
+  } else {
+    allProducts = dummyProducts;
+    displayProducts(allProducts);
+  }
+
+  // فلترة المنتجات
+  const filterButtons = document.getElementById("filter-buttons");
+  if (filterButtons) {
+    filterButtons.addEventListener("click", (e) => {
+      if (!e.target.classList.contains("filter-btn")) return;
+
+      document.querySelectorAll(".filter-btn").forEach(btn => btn.classList.remove("active"));
+      e.target.classList.add("active");
+
+      const category = e.target.dataset.category;
+      displayProducts(category === "all" ? allProducts : allProducts.filter(p => p.category === category));
     });
-} else {
-  allProducts = dummyProducts;
-  displayProducts(allProducts);
+  }
 }
-
-// فلترة المنتجات
-document.getElementById("filter-buttons").addEventListener("click", (e) => {
-  if (!e.target.classList.contains("filter-btn")) return;
-
-  document.querySelectorAll(".filter-btn").forEach(btn => btn.classList.remove("active"));
-  e.target.classList.add("active");
-
-  const category = e.target.dataset.category;
-  displayProducts(category === "all" ? allProducts : allProducts.filter(p => p.category === category));
-});
-
-// navbar loader
-document.addEventListener("DOMContentLoaded", () => {
-  fetch("nav.html")
-    .then(res => res.text())
-    .then(data => document.getElementById("navbar").innerHTML = data)
-    .catch(err => console.error(err));
-});
-
