@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار الباك اند - Cart & Checkout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-purple-50 to-pink-50 min-h-screen p-6">
+
+<div class="max-w-6xl mx-auto">
+    <div class="bg-white rounded-2xl shadow-2xl p-8 mb-6">
+        <h1 class="text-4xl font-bold text-center bg-gradient-to-r from-purple-600 to-pink-600 text-transparent bg-clip-text mb-2">
+            🧪 اختبار الباك اند
+        </h1>
+        <p class="text-center text-gray-600">اختبري كل API endpoints بسهولة</p>
+    </div>
+
+    <!-- Settings -->
+    <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+        <h2 class="text-2xl font-bold mb-4">⚙️ الإعدادات</h2>
+        <div class="grid grid-cols-2 gap-4">
+            <div>
+                <label class="block font-semibold mb-2">Base URL:</label>
+                <input type="text" id="baseUrl" value="http://localhost:8000" 
+                       class="w-full border-2 border-gray-300 rounded-lg p-2 focus:border-purple-500 focus:outline-none">
+            </div>
+            <div>
+                <label class="block font-semibold mb-2">Auth Token (اختياري):</label>
+                <input type="text" id="authToken" placeholder="Bearer token..."
+                       class="w-full border-2 border-gray-300 rounded-lg p-2 focus:border-purple-500 focus:outline-none">
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        
+        <!-- Cart Tests -->
+        <div class="bg-white rounded-xl shadow-lg p-6">
+            <h2 class="text-2xl font-bold mb-4 text-purple-600">🛒 Cart APIs</h2>
+            
+            <div class="space-y-3">
+                <button onclick="testGetCart()" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 rounded-lg transition">
+                    GET /api/cart
+                </button>
+                
+                <button onclick="testGetCartCount()" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-lg transition">
+                    GET /api/cart/count
+                </button>
+                
+                <div class="border-2 border-gray-200 rounded-lg p-3">
+                    <div class="grid grid-cols-2 gap-2 mb-2">
+                        <input type="number" id="menuItemId" placeholder="Menu Item ID" 
+                               class="border border-gray-300 rounded p-2" value="1">
+                        <input type="number" id="quantity" placeholder="الكمية" 
+                               class="border border-gray-300 rounded p-2" value="2">
+                    </div>
+                    <button onclick="testAddToCart()" class="w-full bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 rounded transition">
+                        POST /api/cart/add
+                    </button>
+                </div>
+                
+                <div class="border-2 border-gray-200 rounded-lg p-3">
+                    <div class="grid grid-cols-2 gap-2 mb-2">
+                        <input type="number" id="cartItemId" placeholder="Cart Item ID" 
+                               class="border border-gray-300 rounded p-2" value="1">
+                        <input type="number" id="updateQuantity" placeholder="الكمية الجديدة" 
+                               class="border border-gray-300 rounded p-2" value="5">
+                    </div>
+                    <button onclick="testUpdateCart()" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 rounded transition">
+                        PUT /api/cart/update/{id}
+                    </button>
+                </div>
+                
+                <div class="border-2 border-gray-200 rounded-lg p-3">
+                    <input type="number" id="removeItemId" placeholder="Cart Item ID" 
+                           class="border border-gray-300 rounded p-2 w-full mb-2" value="1">
+                    <button onclick="testRemoveItem()" class="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-2 rounded transition">
+                        DELETE /api/cart/remove/{id}
+                    </button>
+                </div>
+                
+                <button onclick="testClearCart()" class="w-full bg-gray-700 hover:bg-gray-800 text-white font-bold py-3 rounded-lg transition">
+                    POST /api/cart/clear
+                </button>
+            </div>
+        </div>
+
+        <!-- Checkout Tests -->
+        <div class="bg-white rounded-xl shadow-lg p-6">
+            <h2 class="text-2xl font-bold mb-4 text-pink-600">💳 Checkout APIs</h2>
+            
+            <div class="space-y-3">
+                <button onclick="testCheckoutSummary()" class="w-full bg-teal-500 hover:bg-teal-600 text-white font-bold py-3 rounded-lg transition">
+                    GET /api/checkout/summary
+                </button>
+                
+                <div class="border-2 border-gray-200 rounded-lg p-3">
+                    <select id="paymentMethod" class="border border-gray-300 rounded p-2 w-full mb-2">
+                        <option value="cash">نقدي (Cash)</option>
+                        <option value="card">بطاقة (Card)</option>
+                        <option value="online">أونلاين (Online)</option>
+                    </select>
+                    <button onclick="testProcessCheckout()" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 rounded transition">
+                        POST /api/checkout
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quick Workflow -->
+            <div class="mt-6 p-4 bg-gradient-to-r from-purple-100 to-pink-100 rounded-lg">
+                <h3 class="font-bold mb-3 text-lg">🚀 اختبار سريع كامل</h3>
+                <button onclick="runFullWorkflow()" class="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-3 rounded-lg transition">
+                    تشغيل الاختبار الكامل
+                </button>
+                <p class="text-xs text-gray-600 mt-2">
+                    (Add → Update → Get Cart → Summary → Checkout → Clear)
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Response Area -->
+    <div class="bg-white rounded-xl shadow-lg p-6 mt-6">
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-2xl font-bold">📋 النتائج</h2>
+            <button onclick="clearResults()" class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition">
+                مسح
+            </button>
+        </div>
+        <div id="results" class="bg-gray-900 text-green-400 rounded-lg p-4 font-mono text-sm overflow-auto max-h-96">
+            جاهز للاختبار... 🚀
+        </div>
+    </div>
+</div>
+
+<script>
+const getBaseUrl = () => document.getElementById('baseUrl').value;
+const getAuthToken = () => document.getElementById('authToken').value;
+
+function log(message, type = 'info') {
+    const results = document.getElementById('results');
+    const colors = {
+        info: 'text-blue-400',
+        success: 'text-green-400',
+        error: 'text-red-400',
+        warning: 'text-yellow-400'
+    };
+    const timestamp = new Date().toLocaleTimeString('ar-EG');
+    results.innerHTML += `<div class="${colors[type]}">[${timestamp}] ${message}</div>`;
+    results.scrollTop = results.scrollHeight;
+}
+
+function clearResults() {
+    document.getElementById('results').innerHTML = 'جاهز للاختبار... 🚀';
+}
+
+async function makeRequest(endpoint, method = 'GET', body = null) {
+    const url = `${getBaseUrl()}${endpoint}`;
+    const token = getAuthToken();
+    
+    log(`🔄 ${method} ${endpoint}`, 'info');
+    
+    const options = {
+        method,
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+        }
+    };
+    
+    if (token) {
+        options.headers['Authorization'] = `Bearer ${token}`;
+    }
+    
+    if (body) {
+        options.body = JSON.stringify(body);
+    }
+    
+    try {
+        const response = await fetch(url, options);
+        const data = await response.json();
+        
+        if (response.ok) {
+            log(`✅ نجح! Status: ${response.status}`, 'success');
+            log(`Response: ${JSON.stringify(data, null, 2)}`, 'success');
+        } else {
+            log(`❌ فشل! Status: ${response.status}`, 'error');
+            log(`Error: ${JSON.stringify(data, null, 2)}`, 'error');
+        }
+        
+        return { success: response.ok, data };
+    } catch (error) {
+        log(`💥 خطأ في الاتصال: ${error.message}`, 'error');
+        return { success: false, error: error.message };
+    }
+}
+
+async function testGetCart() {
+    await makeRequest('/api/cart');
+}
+
+async function testGetCartCount() {
+    await makeRequest('/api/cart/count');
+}
+
+async function testAddToCart() {
+    const menuItemId = document.getElementById('menuItemId').value;
+    const quantity = document.getElementById('quantity').value;
+    await makeRequest('/api/cart/add', 'POST', { 
+        menu_item_id: parseInt(menuItemId), 
+        quantity: parseInt(quantity) 
+    });
+}
+
+async function testUpdateCart() {
+    const cartItemId = document.getElementById('cartItemId').value;
+    const quantity = document.getElementById('updateQuantity').value;
+    await makeRequest(`/api/cart/update/${cartItemId}`, 'PUT', { 
+        quantity: parseInt(quantity) 
+    });
+}
+
+async function testRemoveItem() {
+    const itemId = document.getElementById('removeItemId').value;
+    await makeRequest(`/api/cart/remove/${itemId}`, 'DELETE');
+}
+
+async function testClearCart() {
+    await makeRequest('/api/cart/clear', 'POST');
+}
+
+async function testCheckoutSummary() {
+    await makeRequest('/api/checkout/summary');
+}
+
+async function testProcessCheckout() {
+    const paymentMethod = document.getElementById('paymentMethod').value;
+    await makeRequest('/api/checkout', 'POST', { payment_method: paymentMethod });
+}
+
+async function runFullWorkflow() {
+    log('🎬 بدء الاختبار الكامل...', 'warning');
+    log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━', 'warning');
+    
+    await new Promise(r => setTimeout(r, 500));
+    log('1️⃣ إضافة منتج للسلة...', 'info');
+    await testAddToCart();
+    
+    await new Promise(r => setTimeout(r, 1000));
+    log('2️⃣ تحديث الكمية...', 'info');
+    await testUpdateCart();
+    
+    await new Promise(r => setTimeout(r, 1000));
+    log('3️⃣ عرض السلة...', 'info');
+    await testGetCart();
+    
+    await new Promise(r => setTimeout(r, 1000));
+    log('4️⃣ ملخص الدفع...', 'info');
+    await testCheckoutSummary();
+    
+    await new Promise(r => setTimeout(r, 1000));
+    log('5️⃣ إتمام الطلب...', 'info');
+    await testProcessCheckout();
+    
+    await new Promise(r => setTimeout(r, 1000));
+    log('6️⃣ مسح السلة...', 'info');
+    await testClearCart();
+    
+    log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━', 'warning');
+    log('✨ انتهى الاختبار الكامل!', 'success');
+}
+</script>
+
+</body>
+</html>
