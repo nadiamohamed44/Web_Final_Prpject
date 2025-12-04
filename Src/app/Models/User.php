@@ -58,10 +58,10 @@ class User extends Authenticatable
         return $this->hasMany(UserPhone::class);
     }
 
-    public function cart()
-    {
-        return $this->hasOne(Cart::class);
-    }
+    //public function cart()
+    //{
+      //  return $this->hasOne(Cart::class);
+    //}
 
     public function orders()
     {

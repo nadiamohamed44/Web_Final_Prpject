@@ -1,0 +1,44 @@
+<?php
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\CartController;
+
+/*
+|--------------------------------------------------------------------------
+| API Routes
+|--------------------------------------------------------------------------
+*/
+
+
+use App\Http\Controllers\AuthController;
+
+// API Auth Routes (مهم جدًا يكونوا قبل أي middleware)
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});
+
+// ======================
+//  (Cart API)
+// ======================
+
+Route::get('/cart/count', [CartController::class, 'count']);
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/cart', [CartController::class, 'index']);
+    Route::post('/cart/add', [CartController::class, 'add']);
+    Route::put('/cart/update/{cartItemId}', [CartController::class, 'update']);
+    Route::delete('/cart/remove/{cartItemId}', [CartController::class, 'remove']);
+    Route::post('/cart/clear', [CartController::class, 'clear']);
+});
+
+use App\Http\Controllers\Api\CheckoutController;
+
+// 
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/checkout/summary', [CheckoutController::class, 'summary']);
+    Route::post('/checkout', [CheckoutController::class, 'process']);
+});

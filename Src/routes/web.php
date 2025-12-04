@@ -4,6 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
+use Illuminate\Support\Facades\DB;
+use App\Models\MenuItem;
+use App\Services\CartService;
+use App\Services\CheckoutService;
+use Illuminate\Support\Facades\Auth;
 
 // Homepage
 Route::get('/', function () {
@@ -25,26 +30,18 @@ Route::middleware('auth')->group(function () {
     Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
 });
 
-
-/*
- * Admin routes - protected by auth and is_admin middleware
- */
+// Admin routes - protected by auth and is_admin middleware
 Route::middleware(['auth','is_admin'])->prefix('admin')->group(function () {
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 });
 
-
-
-
-
-//test database connection
-use Illuminate\Support\Facades\DB;
-
+// Test database connection
 Route::get('/db-test', function () {
     try {
         DB::connection()->getPdo();
         return "✅ Database connection OK! Connected to: " . DB::connection()->getDatabaseName();
-    }catch (\Exception $e) {
+    } catch (\Exception $e) {
         return "❌ Database connection failed: " . $e->getMessage();
     }
 });
+
