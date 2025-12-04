@@ -1,0 +1,43 @@
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login - Byte Bites</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+  <div class="admin-login">
+    <h2>ADMIN PANEL</h2>
+    <p>Byte Bites Management</p>
+    <form id="admin-login-form">
+      <input type="text" class="form-control" placeholder="Username" required>
+      <input type="password" class="form-control" placeholder="Password" required>
+      <button type="submit" class="btn btn-admin w-100">LOGIN AS ADMIN</button>
+    </form>
+  </div>
+
+  <script>
+    // بيانات الأدمن المؤقتة (بعدين هتتربط بقاعدة بيانات)
+    const adminCreds = { username: "admin", password: "byte123" };
+
+    document.getElementById("admin-login-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const user = this[0].value;
+      const pass = this[1].value;
+
+      if (user === adminCreds.username && pass === adminCreds.password) {
+        localStorage.setItem("isAdminLoggedIn", "true");
+        window.location.href = "dashboard.html";
+      } else {
+        alert("خطأ في اسم المستخدم أو كلمة المرور!");
+      }
+    });
+  </script>
+</body>
+</html>
