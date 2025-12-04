@@ -1,6 +1,104 @@
 // script.js
 // API URL
 const apiURL = 'https://myshop.com/api/products'; // غيّري للرابط الحقيقي
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  // تحميل Navbar
+  fetch("navbar.html")
+    .then(res => res.text())
+    .then(data => {
+      const placeholder = document.getElementById("navbar-placeholder");
+      placeholder.innerHTML = data;
+
+      const navbar = placeholder.querySelector('nav');
+
+      // scroll effect
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      });
+
+      // smooth scroll
+      navbar.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', e => {
+          e.preventDefault();
+          const target = document.querySelector(anchor.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+
+    })
+    .catch(err => console.error("Error loading navbar:", err));
+});
+
+//footer
+// تحميل Footer في صفحة
+document.addEventListener("DOMContentLoaded", () => {
+  fetch("footer.html")
+      .then(res => res.text())
+      .then(data => {
+          const footerPlaceholder = document.createElement('div');
+          footerPlaceholder.innerHTML = data;
+          document.body.appendChild(footerPlaceholder);
+
+          // مثال: تحديث السنة الحالية تلقائياً
+          const yearSpan = document.getElementById("current-year");
+          if (yearSpan) {
+              yearSpan.textContent = new Date().getFullYear();
+          }
+
+          // أي أحداث إضافية للـ Footer ممكن تحطيها هنا
+      })
+      .catch(err => console.error('Error loading footer:', err));
+});
+ليه
+
+//home- Dish rotation on scroll - FIXED
+const dishImage = document.querySelector('.wilma-dish-image'); 
+
+if (dishImage) {
+    let lastScrollY = window.scrollY;
+    let rotation = 0;
+
+    window.addEventListener('scroll', function() {
+        const currentScrollY = window.scrollY;
+        const scrollDifference = currentScrollY - lastScrollY;
+        
+        // Rotate based on scroll direction and amount
+        rotation += scrollDifference * 0.5;
+        dishImage.style.transform = `rotate(${rotation}deg)`;
+        
+        lastScrollY = currentScrollY;
+    });
+}
+
+//home- Smooth scrolling
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+
+
+
+
+
+
+
 // Dummy data
 const dummyProducts = [
   {name: "Pepperoni Pizza", price: 250, image: "P4.jpg", category: "pizza"},
@@ -68,3 +166,4 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(data => document.getElementById("navbar").innerHTML = data)
     .catch(err => console.error(err));
 });
+
