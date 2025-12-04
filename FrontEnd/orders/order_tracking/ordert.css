@@ -1,87 +1,124 @@
 body {
-      background: linear-gradient(135deg,#ebd8c9 0%,#f6efe9 100%);
-      font-family: "Poppins", sans-serif;
-      min-height: 100vh;
-      padding-top: 100px;
-      color: #6b4f4a;
-    }
-    .track-container {
-      max-width: 600px;
-      margin: 0 auto;
-      background: #e6afa8;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 15px 40px rgba(209,146,139,0.4);
-      border: 2px solid #d1928b;
-    }
-    .track-header {
-      background: #d1928b;
-      color: #fff;
-      padding: 25px;
-      text-align: center;
-    }
-    .track-header h2 {
-      margin: 0;
-      font-weight: 800;
-      letter-spacing: 3px;
-    }
-    .order-info {
-      padding: 20px;
-      text-align: center;
-      background: #f5e0dc;
-    }
-    .progress-steps {
-      padding: 40px 30px;
-      position: relative;
-    }
-    .step {
-      display: flex;
-      align-items: center;
-      margin-bottom: 30px;
-      position: relative;
-    }
-    .step:last-child { margin-bottom: 0; }
-    .step-icon {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: #d6b8b4;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-      z-index: 2;
-      transition: all 0.4s ease;
-    }
-    .step.active .step-icon {
-      background: #d1928b;
-      color: #fff;
-      transform: scale(1.15);
-      box-shadow: 0 0 20px #d1928b;
-    }
-    .step.completed .step-icon {
-      background: #996c67;
-      color: #fff;
-    }
-    .step-text {
-      margin-left: 20px;
-      font-weight: 600;
-    }
-    .step-text h4 { margin: 0; font-size: 18px; }
-    .step-text p { margin: 5px 0 0; font-size: 14px; opacity: 0.8; }
-    .line {
-      position: absolute;
-      left: 30px;
-      top: 70px;
-      bottom: 70px;
-      width: 4px;
-      background: #d6b8b4;
-      z-index: 1;
-    }
-    .estimated-time {
-      text-align: center;
-      padding: 20px;
-      font-size: 18px;
-      font-weight: 700;
-      color: #996c67;
-    }
+  background: linear-gradient(135deg, #1a2f2f 0%, #142828 100%);
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+  padding-top: 100px;
+  color: #fff;
+}
+
+/* Main container */
+.track-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #142828;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+  border: 2px solid #d4af37;
+}
+
+/* Header */
+.track-header {
+  background: #1a2f2f;
+  color: #d4af37;
+  padding: 25px;
+  text-align: center;
+}
+
+.track-header h2 {
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+/* Order info bar */
+.order-info {
+  padding: 20px;
+  text-align: center;
+  background: #0f1f1f;
+  color: #d4af37;
+}
+
+/* Steps wrapper */
+.progress-steps {
+  padding: 40px 30px;
+  position: relative;
+}
+
+/* Each step */
+.step {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.step:last-child { margin-bottom: 0; }
+
+/* Step icon */
+.step-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #344646;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  z-index: 2;
+  transition: all 0.4s ease;
+  color: #d4af37;
+}
+
+/* Active step */
+.step.active .step-icon {
+  background: #d4af37;
+  color: #000;
+  transform: scale(1.15);
+  box-shadow: 0 0 20px rgba(212,175,55,0.6);
+}
+
+/* Completed step */
+.step.completed .step-icon {
+  background: #c9a63f;
+  color: #000;
+}
+
+/* Step text */
+.step-text {
+  margin-left: 20px;
+  font-weight: 600;
+}
+
+.step-text h4 {
+  margin: 0;
+  font-size: 18px;
+  color: #d4af37;
+}
+
+.step-text p {
+  margin: 5px 0 0;
+  font-size: 14px;
+  opacity: 0.8;
+  color: #fff;
+}
+
+/* Vertical progress line */
+.line {
+  position: absolute;
+  left: 30px;
+  top: 70px;
+  bottom: 70px;
+  width: 4px;
+  background: #344646;
+  z-index: 1;
+}
+
+/* Estimated delivery time */
+.estimated-time {
+  text-align: center;
+  padding: 20px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #d4af37;
+}

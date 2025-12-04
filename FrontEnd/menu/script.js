@@ -61,10 +61,3 @@ document.getElementById("filter-buttons").addEventListener("click", (e) => {
   displayProducts(category === "all" ? allProducts : allProducts.filter(p => p.category === category));
 });
 
-// navbar loader
-document.addEventListener("DOMContentLoaded", () => {
-  fetch("nav.html")
-    .then(res => res.text())
-    .then(data => document.getElementById("navbar").innerHTML = data)
-    .catch(err => console.error(err));
-});
