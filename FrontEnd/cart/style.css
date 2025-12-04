@@ -1,0 +1,12 @@
+.product-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+}
+
+.summary-box {
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 10px;
+  background: #fafafa;
+}
