@@ -1,12 +1,118 @@
-.product-img {
-  width: 60px;
-  height: 60px;
-  border-radius: 8px;
+/* Background */
+.soft-bg {
+  background: linear-gradient(135deg,#ebd8c9 0%,#f6efe9 100%);
+  font-family: "Poppins", sans-serif;
 }
 
+/* Container */
+.container-box {
+  width: 90%;
+  max-width: 600px;
+  margin: 40px auto;
+  background: #e6afa8;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 8px 18px #d1928b;
+  border: 1px solid #d1928b;
+}
+
+.page-title {
+  text-align: center;
+  color: #fff;
+  font-weight: 800;
+  text-shadow: 0 0 8px #d1928b;
+  letter-spacing: 2px;
+}
+
+/* Cart Items */
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f6d5cf;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 12px;
+  border: 1px solid #d1928b;
+}
+
+.cart-item-name {
+  font-weight: 700;
+  color: #996c67;
+}
+
+.qty-btn {
+  background: #d1928b;
+  border: none;
+  padding: 5px 10px;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.qty-btn:hover {
+  background: #996c67;
+}
+
+.price {
+  font-weight: 600;
+  color: #996c67;
+}
+
+/* Summary Box */
 .summary-box {
-  border: 1px solid #ccc;
+  background: #f6d5cf;
   padding: 15px;
+  border-radius: 12px;
+  border: 1px solid #d1928b;
+  margin-top: 20px;
+}
+
+.summary-box h4 {
+  margin-bottom: 10px;
+  color: #996c67;
+  font-weight: 700;
+}
+
+.total-amount {
+  font-size: 18px;
+  font-weight: 800;
+  color: #a45549;
+}
+
+/* Buttons */
+.btn-gold {
+  background: #d1928b;
+  border: none;
+  padding: 12px;
+  width: 100%;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-gold:hover {
+  background: #996c67;
+  transform: scale(1.03);
+}
+
+/* Form */
+.form-control, .form-select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
   border-radius: 10px;
-  background: #fafafa;
+  border: 1px solid #d1928b;
+  background: #f6efe9;
+  color: #333;
+}
+
+label {
+  font-weight: 600;
+  color: #fff;
 }
