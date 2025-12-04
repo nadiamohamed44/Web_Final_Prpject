@@ -1,0 +1,357 @@
+
+/*home*/
+ 
+
+  /* ========================================
+   WILMA PAGE STYLES - Add this to your main CSS file
+   All styles are scoped to .wilma-page to avoid conflicts
+   ======================================== */
+
+   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
+
+   /* Wilma Page Base Styles */
+   .home-page {
+       font-family: 'Poppins', sans-serif;
+       color: #fff;
+       overflow-x: hidden;
+   }
+   
+   /* Wilma Navbar */
+   /* Wilma Navbar */
+   .wilma-navbar {
+       position: fixed;
+       top: 0;
+       left: 0;
+       width: 100%;
+       z-index: 1000;
+       transition: all 0.3s ease;
+       padding: 20px 0;
+       background: transparent;
+   }
+   
+   /* عند النزول بالصفحة */
+   .wilma-navbar.scrolled {
+       background: rgba(20, 40, 40, 0.95);
+       padding: 10px 0;
+       box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+   }
+   
+   /* شعار الموقع */
+   .wilma-brand {
+       font-family: 'Playfair Display', serif;
+       font-size: 2rem;
+       font-weight: 700;
+       color: #fff !important;
+       letter-spacing: 2px;
+   }
+   
+   /* روابط القائمة */
+   .wilma-navbar .nav-link {
+       color: #fff !important;
+       margin: 0 15px;
+       font-weight: 300;
+       transition: color 0.3s ease;
+   }
+   
+   .wilma-navbar .nav-link:hover {
+       color: #d4af37 !important;
+   }
+   
+   
+   
+   
+   
+   
+   /* Responsive */
+   @media (max-width: 100px) {
+       .wilma-social-icons {
+           display: none;
+       }
+   }
+   
+   
+   .navbar-logo {
+       height: 60px; /* ارتفاع مناسب */
+       width: auto;  /* يحتفظ بنسبة العرض للارتفاع */
+       object-fit: contain;
+   }
+   /* Wilma Hero Section */
+   .wilma-hero-section {
+       height: 100vh;
+       background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('grand.jpg') center/cover;
+       display: flex;
+   
+       align-items: center;
+       justify-content: center;
+       position: relative;
+   }
+   
+   .wilma-hero-content {
+       text-align: center;
+       animation: wilmaFadeInUp 1s ease;
+       margin-top: 70px;
+   }
+   
+   .wilma-hero-subtitle {
+       letter-spacing: 4px;
+       font-size: 0.9rem;
+       margin-bottom: 20px;
+       color: #d4af37;
+       font-weight: 300;
+   }
+   
+   .wilma-hero-title {
+       font-family: 'Playfair Display', serif;
+       font-size: 5rem;
+       font-weight: 700;
+       line-height: 1.2;
+       margin-bottom: 30px;
+   }
+   
+   .wilma-hero-description {
+       font-size: 1.1rem;
+       color: #d4af37;
+       max-width: 600px;
+       margin: 0 auto 40px;
+       font-weight: 300;
+   }
+   
+   /* Wilma Custom Button */
+   .wilma-btn-custom {
+       padding: 15px 40px;
+       border: 2px solid #d4af37;
+       background: transparent;
+       color: #d4af37;
+       letter-spacing: 2px;
+       font-weight: 400;
+       transition: all 0.3s ease;
+       text-transform: uppercase;
+   }
+   
+   .wilma-btn-custom:hover {
+       background: #d4af37;
+       color: #000;
+   }
+   
+   /* Wilma About Section */
+   .wilma-about-section {
+       background: #1a2f2f;
+       padding: 100px 0;
+   }
+   
+   .wilma-section-subtitle {
+       letter-spacing: 3px;
+       font-size: 0.85rem;
+       color: #d4af37;
+       margin-bottom: 20px;
+       text-transform: uppercase;
+   }
+   .mariam{
+       font-family:sans-serif;
+       font-size: 12px;
+   }
+   .wilma-section-title {
+       font-family: 'Playfair Display', serif;
+       font-size: 3rem;
+       margin-bottom: 30px;
+       color: #d4af37;
+   }
+   
+   .wilma-about-image {
+       width: 100%;
+       height: 500px;
+       object-fit: cover;
+       border-radius: 10px;
+       box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+   }
+   
+   .wilma-decorative-line {
+       width: 200px;
+       height: 2px;
+       background: #d4af37;
+       margin: 40px auto;
+       position: relative;
+   }
+   
+   .wilma-decorative-line::before,
+   .wilma-decorative-line::after {
+       content: '';
+       position: absolute;
+       width: 10px;
+       height: 10px;
+       background: #d4af37;
+       border-radius: 50%;
+       top: -4px;
+   }
+   
+   .wilma-decorative-line::before {
+       left: -20px;
+   }
+   
+   .wilma-decorative-line::after {
+       right: -20px;
+   }
+   
+   /* Wilma Chef Section */
+   .wilma-chef-section {
+       background: #142828;
+       padding: 100px 0;
+       padding-bottom: 0px ;
+      
+   }
+   
+   .wilma-chef-card {
+       background: #1a2f2f;
+       padding: 40px;
+       border-radius: 10px;
+       text-align: center;
+      
+   }
+   
+   .wilma-chef-card h3 {
+       font-family: 'Playfair Display', serif;
+       font-size: 2.5rem;
+       margin-bottom: 20px;
+   }
+   
+   .wilma-chef-card p {
+       font-weight: 300;
+       margin-bottom: 30px;
+   }
+   
+   /* FIXED: Removed transition for smooth rotation */
+   .wilma-dish-image {
+       width: 100%;
+       max-width: 400px;
+       border-radius: 50%;
+       box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+       margin-top: 30px;
+       /* NO transition - this allows instant rotation via JavaScript */
+   }
+   
+   /* Wilma Animation */
+   @keyframes wilmaFadeInUp {
+       from {
+           opacity: 0;
+           transform: translateY(30px);
+       }
+       to {
+           opacity: 1;
+           transform: translateY(0);
+       }
+   }
+   
+   /* Wilma Responsive Styles */
+   @media (max-width: 768px) {
+       .wilma-hero-title {
+           font-size: 3rem;
+       }
+       .wilma-section-title {
+           font-size: 2rem;
+       }
+       .wilma-about-image {
+           height: auto;
+       }
+   }
+   .wilma-footer {
+    background: #1a2f2f;
+    color: rgba(255,255,255,0.8);
+    padding: 4rem 0 2rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.footer-title {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.footer-text {
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    color: rgba(255,255,255,0.7);
+}
+
+.footer-social {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer-social a {
+    width: 40px;
+    height: 40px;
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.footer-social a:hover {
+    background:rgba(255,255,255,0.8);
+    color: var(--dark-bg);
+    transform: translateY(-3px);
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.75rem;
+}
+
+.footer-links a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.footer-links a:hover {
+    color:rgba(255,255,255,0.8) ;
+    padding-left: 5px;
+}
+
+.footer-contact {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-contact li {
+    margin-bottom: 1rem;
+    color: rgba(255,255,255,0.7);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+
+.footer-contact i {
+    color: var(--primary-color);
+    margin-top: 3px;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.5);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .wilma-footer {
+        padding: 3rem 0 1.5rem;
+    }
+    
+    .footer-title {
+        font-size: 1.3rem;
+    }
+}

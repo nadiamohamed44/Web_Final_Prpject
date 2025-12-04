@@ -37,6 +37,27 @@ document.addEventListener("DOMContentLoaded", () => {
     .catch(err => console.error("Error loading navbar:", err));
 });
 
+//footer
+// تحميل Footer في صفحة
+document.addEventListener("DOMContentLoaded", () => {
+  fetch("footer.html")
+      .then(res => res.text())
+      .then(data => {
+          const footerPlaceholder = document.createElement('div');
+          footerPlaceholder.innerHTML = data;
+          document.body.appendChild(footerPlaceholder);
+
+          // مثال: تحديث السنة الحالية تلقائياً
+          const yearSpan = document.getElementById("current-year");
+          if (yearSpan) {
+              yearSpan.textContent = new Date().getFullYear();
+          }
+
+          // أي أحداث إضافية للـ Footer ممكن تحطيها هنا
+      })
+      .catch(err => console.error('Error loading footer:', err));
+});
+ليه
 
 //home- Dish rotation on scroll - FIXED
 const dishImage = document.querySelector('.wilma-dish-image'); 
@@ -71,27 +92,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-//footer
-// تحميل Footer في صفحة
-document.addEventListener("DOMContentLoaded", () => {
-  fetch("footer.html")
-      .then(res => res.text())
-      .then(data => {
-          const footerPlaceholder = document.createElement('div');
-          footerPlaceholder.innerHTML = data;
-          document.body.appendChild(footerPlaceholder);
-
-          // مثال: تحديث السنة الحالية تلقائياً
-          const yearSpan = document.getElementById("current-year");
-          if (yearSpan) {
-              yearSpan.textContent = new Date().getFullYear();
-          }
-
-          // أي أحداث إضافية للـ Footer ممكن تحطيها هنا
-      })
-      .catch(err => console.error('Error loading footer:', err));
-});
-ليه
 
 
 
