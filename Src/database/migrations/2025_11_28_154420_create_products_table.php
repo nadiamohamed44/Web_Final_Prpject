@@ -19,6 +19,7 @@ return new class extends Migration
 
             // بيانات المنتج
             $table->string('name');
+            $table->string('slug')->unique();
             $table->text('description')->nullable();
             $table->decimal('price', 10, 2);
 
@@ -32,6 +33,11 @@ return new class extends Migration
             $table->boolean('is_available')->default(1);
 
             $table->timestamps();
+
+            // إضافة indexes للبحث وتحسين الأداء
+            $table->index('category_id');
+            $table->index('is_active');
+            $table->index(['is_active', 'category_id']);
         });
     }
 
