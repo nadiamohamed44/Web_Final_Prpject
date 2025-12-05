@@ -3,16 +3,16 @@
 const apiURL = 'https://myshop.com/api/products'; // غيّري للرابط الحقيقي
 // Dummy data
 const dummyProducts = [
-  {name: "Pepperoni Pizza", price: 250, image: "P4.jpg", category: "pizza"},
-  {name: "Cheese Burger", price: 180, image: "B1.jpg", category: "burger"},
-  {name: "Chicken Pasta", price: 200, image: "Pasta1.jpg", category: "pasta"},
-  {name: "Cold Drink", price: 50, image: "DR1.jpg", category: "drinks"},
-  {name: "Chocolate Cake", price: 90, image: "D1.jpg", category: "dessert"},
+  {name: "Pepperoni Pizza", price: 250, image: "../assets/P1.jpg", category: "pizza"},
+  {name: "Cheese Burger", price: 180, image: "../assets/B1.jpg", category: "burger"},
+  {name: "Chicken Pasta", price: 200, image: "../assets/Pasta1.jpg", category: "pasta"},
+  {name: "Cold Drink", price: 50, image: "../assets/DR1.jpg", category: "drinks"},
+  {name: "Chocolate Cake", price: 90, image: "../assets/D1.jpg", category: "dessert"},
 ];
 
 let allProducts = [];
 
-// عرض المنتجات
+//display products 
 function displayProducts(products) {
   const container = document.getElementById('products-container');
   container.innerHTML = '';
@@ -61,10 +61,3 @@ document.getElementById("filter-buttons").addEventListener("click", (e) => {
   displayProducts(category === "all" ? allProducts : allProducts.filter(p => p.category === category));
 });
 
-// navbar loader
-document.addEventListener("DOMContentLoaded", () => {
-  fetch("nav.html")
-    .then(res => res.text())
-    .then(data => document.getElementById("navbar").innerHTML = data)
-    .catch(err => console.error(err));
-});
