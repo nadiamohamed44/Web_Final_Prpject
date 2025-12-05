@@ -36,6 +36,7 @@ Route::middleware(['auth','is_admin'])->prefix('admin')->group(function () {
 
 
 
+
 //test database connection
 use Illuminate\Support\Facades\DB;
 
@@ -43,7 +44,7 @@ Route::get('/db-test', function () {
     try {
         DB::connection()->getPdo();
         return "✅ Database connection OK! Connected to: " . DB::connection()->getDatabaseName();
-    } catch (\Exception $e) {
+    }catch (\Exception $e) {
         return "❌ Database connection failed: " . $e->getMessage();
     }
 });
