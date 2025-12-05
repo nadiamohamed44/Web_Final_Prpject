@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Register</title>
+    <link rel="stylesheet" href="Style.css">
+   <style>
+  .login-container {
+    margin-top: 120px; /* زوّدي الرقم حسب ارتفاع الـ navbar */
+  }
+</style>
+
+</head>
+<body>    
+      <div id="navbar-placeholder"></div>
+
+    <div class="login-container">
+
+     <div class="page-wrapper">
+    <div class="main-container">
+        <!-- Left Section -->
+        <div class="left-section">
+            <div class="logo">Byte Bites</div>
+            
+            <div>
+                <div class="hero-image">
+                    <img src="../assets/login.jpg" alt="restaurant Image">
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Section -->
+        <div class="right-section">
+            <div class="success-message" id="successMessage">
+                Success! 
+            </div>
+
+            <!-- Tabs -->
+            <div class="tabs">
+                <div class="tab" id="loginTab">Login</div>
+                <div class="tab active" id="registerTab">Register</div>
+            </div>
+
+            <!-- Login Form -->
+            <div class="form-container" id="loginForm">
+                <div class="form-header">
+                    <h1>Welcome back</h1>
+                    <p>Don't have an account? <a href="#" id="goToRegister">Sign up</a></p>
+                </div>
+
+                <form id="loginFormSubmit">
+                    <div class="form-group">
+                        <input type="email" id="loginEmail" placeholder="Email" required>
+                        <div class="error-message" id="loginEmailError">Please enter a valid email</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                        <div class="error-message" id="loginPasswordError">Password must be at least 6 characters</div>
+                    </div>
+                    
+                    <div class="forgot-password">
+                        <a href="#" id="forgotPassword">Forgot password?</a>
+                    </div>
+                    
+                    <button type="submit" id="loginBtn">Login</button>
+                </form>
+            </div>
+
+            <!-- Register Form -->
+            <div class="form-container active" id="registerForm">
+                <div class="form-header">
+                    <h1>Create an account</h1>
+                    <p>Already have an account? <a href="#" id="goToLogin">Log in</a></p>
+                </div>
+
+                <form id="registerFormSubmit">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="text" id="registerFirstName" placeholder="First name" required>
+                            <div class="error-message" id="registerFirstNameError">Please enter your first name</div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="registerLastName" placeholder="Last name" required>
+                            <div class="error-message" id="registerLastNameError">Please enter your last name</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="email" id="registerEmail" placeholder="Email" required>
+                        <div class="error-message" id="registerEmailError">Please enter a valid email</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="password" id="registerPassword" placeholder="Enter your password" required>
+                        <div class="error-message" id="registerPasswordError">Password must be at least 6 characters</div>
+                    </div>
+                    
+                    <button type="submit" id="registerBtn">Create account</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+  <div id="footer-placeholder"></div>
+  </div>
+    <script src="script.js"></script>
+</body>
+</html>
