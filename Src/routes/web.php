@@ -16,28 +16,14 @@ use App\Http\Controllers\ProductController;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('welcome');
 });
 
-Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
-Route::post('/login', [AuthController::class, 'login']);
-Route::post('/register', [AuthController::class, 'register'])->name('register');
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
-Route::get('/products', [ProductController::class, 'index'])->name('products');
-Route::get('/api/products', [ProductController::class, 'apiIndex'])->name('api.products');
-
-Route::get('/cart', function () {
-    // Placeholder for cart, uses HTML for now or we can make a view
-    return view('layouts.app'); // Or create a cart view
-})->name('cart');
-
-// Debug route (optional, can be removed)
 Route::get('/debug-db', function () {
     try {
         DB::connection()->getPdo();
-        return 'Laravel is connected to database: ' . DB::connection()->getDatabaseName();
+        return "✅ Database connection OK! Connected to: " . DB::connection()->getDatabaseName();
     } catch (\Exception $e) {
-        return 'Could not connect: ' . $e->getMessage();
+        return "❌ Database connection failed: " . $e->getMessage();
     }
 });
