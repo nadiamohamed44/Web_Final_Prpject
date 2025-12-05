@@ -13,13 +13,19 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
             $table->string('name');
+            $table->string('slug')->unique();
             $table->text('description')->nullable();
             $table->decimal('price', 10, 2);
-            $table->string('image_url')->nullable();
+            $table->foreignId('category_id')->constrained()->onDelete('cascade');
+            $table->boolean('is_active')->default(true);
             $table->enum('size', ['S', 'M', 'L', 'XL']);
             $table->timestamps();
+            
+            // إضافة indexes للبحث وتحسين الأداء
+            $table->index('category_id');
+            $table->index('is_active');
+            $table->index(['is_active', 'category_id']);
         });
     }
 

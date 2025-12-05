@@ -5,8 +5,10 @@ namespace App\Services;
 use App\Models\Cart;
 use App\Models\CartItem;
 use App\Models\MenuItem;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class CartService
 {
@@ -29,14 +31,37 @@ class CartService
                 ]);
             }
         } else {
-            // للضيوف (Guest users)
+            // للضيوف - استخدم temporary user
+            $guestUser = $this->getOrCreateGuestUser();
+            
             $cart = Cart::firstOrCreate(
-                ['user_id' => null],
+                ['user_id' => $guestUser->id],
                 ['total' => 0]
             );
         }
 
         return $cart->load('items.menuItem');
+    }
+
+    /**
+     * Get or create guest user for anonymous carts
+     * @return User
+     */
+    protected function getOrCreateGuestUser()
+    {
+        // ابحث عن user مخصص للضيوف أو أنشئه
+        $guestUser = User::where('email', 'like', 'guest_%')->first();
+        
+        if (!$guestUser) {
+            $guestUser = User::create([
+                'first_name' => 'Guest',
+                'last_name' => 'User',
+                'email' => 'guest_' . time() . '@example.com',
+                'password' => bcrypt(Str::random(16))
+            ]);
+        }
+        
+        return $guestUser;
     }
 
     /**
@@ -57,8 +82,8 @@ class CartService
 
         $cart = $this->getCart();
 
-        // البحث عن العنصر في السلة
-        $cartItem = $cart->items()->where('menu_item_id', $menuItemId)->first();
+        // البحث عن العنصر في السلة - استخدم product_id بدل menu_item_id
+        $cartItem = $cart->items()->where('product_id', $menuItemId)->first();
 
         if ($cartItem) {
             // تحديث الكمية إذا كان موجود
@@ -66,9 +91,9 @@ class CartService
                 'quantity' => $cartItem->quantity + $quantity
             ]);
         } else {
-            // إضافة عنصر جديد
+            // إضافة عنصر جديد - استخدم product_id بدل menu_item_id
             $cart->items()->create([
-                'menu_item_id' => $menuItemId,
+                'product_id' => $menuItemId,
                 'quantity' => $quantity,
                 'price' => $menuItem->price
             ]);

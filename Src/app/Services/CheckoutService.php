@@ -3,6 +3,8 @@
 namespace App\Services;
 
 use App\Models\Order;
+use App\Models\OrderItem;
+use App\Models\MenuItem;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -92,11 +94,18 @@ class CheckoutService
 
             // نسخ العناصر من السلة إلى الطلب
             foreach ($cart->items as $item) {
-                $order->items()->create([
+                OrderItem::create([
+                    'order_id' => $order->id,
                     'menu_item_id' => $item->menu_item_id,
                     'quantity' => $item->quantity,
                     'price' => $item->price
                 ]);
+                
+                // تحديث مخزون المنتج
+                $menuItem = MenuItem::find($item->menu_item_id);
+                if ($menuItem) {
+                    $menuItem->decrement('stock_quantity', $item->quantity);
+                }
             }
 
             // مسح السلة بعد إنشاء الطلب
