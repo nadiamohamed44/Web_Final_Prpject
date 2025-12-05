@@ -4,6 +4,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\ReviewController;
+use App\Http\Controllers\Admin\MenuItemController;
 use Illuminate\Support\Facades\DB;
 use App\Models\MenuItem;
 use App\Services\CartService;
@@ -30,9 +37,27 @@ Route::middleware('auth')->group(function () {
     Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
 });
 
-// Admin routes - protected by auth and is_admin middleware
-Route::middleware(['auth','is_admin'])->prefix('admin')->group(function () {
-    Route::get('dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+// Admin routes - كل الـ routes
+Route::prefix('admin')->name('admin.')->middleware(['auth', 'is_admin'])->group(function () {
+
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    // المنتجات + التصنيفات
+    Route::resource('products', ProductController::class);
+    Route::resource('categories', CategoryController::class);
+
+    // الطلبات
+    Route::resource('orders', OrderController::class);
+    Route::post('orders/{order}/status', [OrderController::class, 'updateStatus'])->name('orders.status');
+
+    // المستخدمين
+    Route::resource('users', UserController::class);
+
+    // التقييمات
+    Route::resource('reviews', ReviewController::class);
+
+    // عناصر القائمة (المنيو)
+    Route::resource('menu-items', MenuItemController::class);
 });
 
 // Test database connection
@@ -44,4 +69,3 @@ Route::get('/db-test', function () {
         return "❌ Database connection failed: " . $e->getMessage();
     }
 });
-

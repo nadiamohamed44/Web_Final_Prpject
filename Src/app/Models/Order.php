@@ -2,18 +2,24 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    //
+    use HasFactory;
+
     protected $fillable = [
         'user_id',
+        'total',
         'status',
-        'shipping_address',
-        'total_amount',
         'payment_method',
-        'payment_status'
+        'delivery_address',
+        'phone'
+    ];
+
+    protected $casts = [
+        'total' => 'decimal:2'
     ];
 
     public function user()

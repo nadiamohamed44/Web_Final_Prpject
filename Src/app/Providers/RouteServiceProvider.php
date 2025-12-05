@@ -2,22 +2,54 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
+    /**
+     * The path to the "home" route for your application.
+     */
+    public const HOME = '/home';
+
+    /**
+     * Define your route model bindings, pattern filters, etc.
+     */
     public function boot(): void
     {
         parent::boot();
-
-        Route::middleware('is_admin', \App\Http\Middleware\IsAdmin::class);
     }
-     protected $routeMiddleware = [
-        'auth' => \App\Http\Middleware\Authenticate::class,
-        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
-        'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
 
-        'is_admin' => \App\Http\Middleware\IsAdmin::class,
-    ];
+    /**
+     * Define the routes for the application.
+     */
+    public function map(): void
+    {
+        $this->mapApiRoutes();
+
+        $this->mapWebRoutes();
+
+        // السطر الجديد اللي هيخلّي ملف admin.php يشتغل
+        $this->mapAdminRoutes();
+    }
+
+    protected function mapWebRoutes(): void
+    {
+        Route::middleware('web')
+            ->group(base_path('routes/web.php'));
+    }
+
+    protected function mapApiRoutes(): void
+    {
+        Route::prefix('api')
+            ->middleware('api')
+            ->group(base_path('routes/api.php'));
+    }
+
+    // الدالة الجديدة دي بس اللي ضفناها
+    protected function mapAdminRoutes(): void
+    {
+        Route::middleware('web')
+            ->group(base_path('routes/admin.php'));
+    }
 }

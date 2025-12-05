@@ -13,12 +13,24 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+
+            // علاقة التصنيف
             $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
+
+            // بيانات المنتج
             $table->string('name');
             $table->text('description')->nullable();
             $table->decimal('price', 10, 2);
-            $table->string('image_url')->nullable();
-            $table->enum('size', ['S', 'M', 'L', 'XL']);
+
+            // الصورة
+            $table->string('image')->nullable();  // ← هذا ما يستخدمه الـ Controller
+
+            // الكمية
+            $table->integer('stock')->default(0);
+
+            // حالة المنتج
+            $table->boolean('is_available')->default(1);
+
             $table->timestamps();
         });
     }
