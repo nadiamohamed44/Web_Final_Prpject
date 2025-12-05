@@ -1,0 +1,102 @@
+   body {
+      background: linear-gradient(135deg, #ebd8c9 0%, #f6efe9 100%);
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      min-height: 100vh;
+    }
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 260px;
+      height: 100vh;
+      background: #d1928b;
+      padding-top: 30px;
+      box-shadow: 8px 0 25px rgba(209,146,139,0.4);
+      z-index: 1000;
+    }
+    .logo {
+      color: #fff;
+      font-size: 28px;
+      font-weight: 800;
+      text-align: center;
+      letter-spacing: 4px;
+      margin-bottom: 60px;
+      text-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+    .sidebar a {
+      display: flex;
+      align-items: center;
+      color: #fff;
+      padding: 16px 30px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s;
+      gap: 15px;
+    }
+    .sidebar a:hover, .sidebar a.active {
+      background: #996c67;
+      border-left: 5px solid #fff;
+      padding-left: 35px;
+    }
+    .sidebar i { font-size: 20px; }
+
+    .main-content {
+      margin-left: 260px;
+      padding: 40px;
+    }
+    .welcome {
+      font-size: 32px;
+      font-weight: 800;
+      color: #996c67;
+      text-align: center;
+      margin-bottom: 40px;
+      text-shadow: 0 0 10px #d1928b;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+    .stat-card {
+      background: #e6afa8;
+      border: 2px solid #d1928b;
+      border-radius: 20px;
+      padding: 35px 25px;
+      text-align: center;
+      box-shadow: 0 12px 30px rgba(209,146,139,0.35);
+      transition: all 0.4s ease;
+    }
+    .stat-card:hover {
+      transform: translateY(-15px) scale(1.03);
+      box-shadow: 0 25px 50px rgba(209,146,139,0.5);
+    }
+    .stat-card h3 {
+      font-size: 48px;
+      font-weight: 800;
+      margin: 15px 0 8px;
+      color: #996c67;
+    }
+    .stat-card p {
+      color: #6b4f4a;
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0;
+    }
+    .btn-manage {
+      background: #d1928b;
+      color: #131212;
+      font-weight: 700;
+      font-size: 20px;
+      padding: 15px 50px;
+      border-radius: 50px;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s;
+    }
+    .btn-manage:hover {
+      background: #996c67;
+      transform: scale(1.08);
+      box-shadow: 0 15px 30px rgba(153,108,103,0.4);
+    }

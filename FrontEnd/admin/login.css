@@ -1,0 +1,51 @@
+body {
+      background: linear-gradient(135deg,#ebd8c9 0%,#f6efe9 100%);
+      font-family: 'Poppins', sans-serif;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .admin-login {
+      background: #e6afa8;
+      padding: 50px 40px;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(209,146,139,0.4);
+      border: 2px solid #d1928b;
+      width: 100%;
+      max-width: 400px;
+    }
+    .admin-login h2 {
+      text-align: center;
+      color: #fff;
+      font-weight: 800;
+      letter-spacing: 4px;
+      margin-bottom: 10px;
+      text-shadow: 0 0 15px #d1928b;
+    }
+    .admin-login p {
+      text-align: center;
+      color: #f0d0cb;
+      margin-bottom: 30px;
+    }
+    .form-control {
+      height: 50px;
+      border-radius: 12px;
+      border: 2px solid #d6b8b4;
+      background: #f5e0dc;
+      margin-bottom: 20px;
+    }
+    .btn-admin {
+      background: #d1928b;
+      color: #131212;
+      font-weight: 700;
+      height: 50px;
+      border-radius: 12px;
+      font-size: 16px;
+      letter-spacing: 1px;
+    }
+    .btn-admin:hover {
+      background: #996c67;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(153,108,103,0.4);
+    }
